@@ -3,7 +3,11 @@ import dbConnect from "@/lib/mongodb";
 import Task from "@/lib/models/Task";
 import { getToken } from "next-auth/jwt";
 
-export async function PATCH(req: any, { params }: { params: { id: string } }) {
+// We update the type signature to expect a Promise for params
+export async function PATCH(
+  req: any, 
+  context: { params: Promise<{ id: string }> }
+) {
   await dbConnect();
   const token = await getToken({ req });
   
@@ -14,10 +18,13 @@ export async function PATCH(req: any, { params }: { params: { id: string } }) {
   try {
     const body = await req.json();
     const { status } = body;
+    
+    // We await the params object before destructuring the ID
+    const { id } = await context.params; 
 
     // Update the task status and return the new document
     const updatedTask = await Task.findByIdAndUpdate(
-      params.id,
+      id,
       { status },
       { new: true }
     );
