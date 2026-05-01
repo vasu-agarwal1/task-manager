@@ -47,15 +47,17 @@ const handler = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.role = user.role; 
+        // Cast user to 'any' to bypass the strict TS check for our custom role
+        token.role = (user as any).role; 
       }
       return token;
     },
     // Pass the role and id from the token to the session object
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.id as string;
-        session.user.role = token.role as string;
+        // Cast session.user to 'any' to allow our custom properties
+        (session.user as any).id = token.id;
+        (session.user as any).role = token.role;
       }
       return session;
     },
