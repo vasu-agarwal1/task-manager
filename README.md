@@ -6,7 +6,7 @@ A full-stack, role-based project management web application designed to streamli
 
 ## 🌐 Live Links
 
-* 🔗 **Live Demo:** https://www.vasuprojects.shop
+* 🔗 **Live Demo:** https://task-manager-production-e1ed.up.railway.app
 * 🎥 **Video Walkthrough:** *(Add your 2–5 min demo video here)*
 
 ---
@@ -186,9 +186,7 @@ git push origin feature/YourFeature
 
 ---
 
-## 📄 License
 
-This project is licensed under the MIT License.
 
 ---
 
@@ -196,8 +194,7 @@ This project is licensed under the MIT License.
 
 **Vasu Agarwal**
 
-* GitHub: https://github.com/your-username
-* LinkedIn: *(Add your profile link)*
+
 
 ---
 
